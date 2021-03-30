@@ -1,0 +1,20 @@
+{
+    "name": "housebook",
+    "version": "1.0.0",
+    "description": "MEVN airbnb like mock app",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "start:dev": "nodemon server.js"
+    },
+    "author": "Avi E. Koenig",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.6.5",
+        "winston": "^3.3.3"
+    }
+}
