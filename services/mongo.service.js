@@ -13,20 +13,21 @@ function connectToMongo() {
 
     const MongoClient = require('mongodb').MongoClient;
 
-    prmConn = MongoClient.connect(url, { useNewUrlParser: true }).then(
-        (client) => {
-            Logger.info('[MONGO SERVICE] new connection to db');
-            prmConn = null;
-            // If we get disconnected (e.g. db is down)
-            client.on('close', () => {
-                Logger.info('[MONGO SERVICE] MongoDB Diconnected!');
-                dbConn = null;
-                client.close();
-            });
-            dbConn = client.db();
-            return dbConn;
-        }
-    );
+    prmConn = MongoClient.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }).then((client) => {
+        Logger.info('[MONGO SERVICE] new connection to db');
+        prmConn = null;
+        // If we get disconnected (e.g. db is down)
+        client.on('close', () => {
+            Logger.info('[MONGO SERVICE] MongoDB Diconnected!');
+            dbConn = null;
+            client.close();
+        });
+        dbConn = client.db();
+        return dbConn;
+    });
     return prmConn;
 }
 
