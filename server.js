@@ -6,8 +6,8 @@ if (result.error) {
 const express = require('express');
 const cors = require('cors');
 const config = require('./config');
-const errorHandler = require('./middleware/errorHandler.middleware');
-
+const { errorHandler } = require('./middleware/errorHandler.middleware');
+const Logger = require('./services/logger.service');
 const app = express();
 
 const corsOptions = {
@@ -45,6 +45,6 @@ process
 
 const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-    console.log('NODE_ENV', process.env.NODE_ENV);
+    Logger.info('Server listening on port: ' + PORT);
+    Logger.info('NODE_ENV' + process.env.NODE_ENV);
 });

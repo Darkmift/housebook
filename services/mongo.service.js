@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 var dbConn = null;
 var prmConn = null;
 const url = process.env.MONGO_URI;
-let dbName = url.substring(config.dbURL.lastIndexOf('/') + 1);
+let dbName = url.substring(url.lastIndexOf('/') + 1);
 
 function connectToMongo() {
     if (prmConn) return prmConn;
